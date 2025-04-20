@@ -1,6 +1,6 @@
-# notesync
+# NoteSync
 
-A new Flutter project.
+A new Flutter project for Human Computer Interaction.
 
 ## Getting Started
 
