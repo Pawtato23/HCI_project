@@ -4,7 +4,12 @@ A new Flutter project for Human Computer Interaction.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Install Flutter, Dart, and Android Ios Emulator, extensions on you VScode
+2. In your Terminal clone the repository of our project:  git clone (the link or our project)
+3. Then in terminal type: cd HCI_project,
+4. and type code . (It'll automatically transfer it to vscode
+5. to run the code start the emulator, then on terminal type flutter run.
+
 
 A few resources to get you started if this is your first Flutter project:
 
