@@ -1,0 +1,53 @@
+buildscript {
+    ext.kotlin_version = '1.6.21'  // Using a stable Kotlin version
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.15'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    
+    // Add this to fix the compileSdkVersion issue
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            if (!project.android.hasProperty('compileSdkVersion') && !project.android.hasProperty('compileSdk')) {
+                project.android.compileSdkVersion = 33  // Set a default value
+            }
+        }
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+    
+    // Fix Kotlin version issues for all plugins
+    if (project.name.contains('flutter_web_auth') || 
+        project.name.contains('speech_to_text') || 
+        project.name.contains('google_sign_in')) {
+        project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+    }
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+

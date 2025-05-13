@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "92852936111",
+    "project_id": "notesync-6ebe7",
+    "storage_bucket": "notesync-6ebe7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92852936111:android:ff7be16cd996d84d3b635a",
+        "android_client_info": {
+          "package_name": "com.example.notesync"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92852936111-jfrv5bl8guu2kbf5jsmk18neo6h13l39.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.notesync",
+            "certificate_hash": "8d9c29f698bbf052a59e8efa310cd547357fe69b"
+          }
+        },
+        {
+          "client_id": "92852936111-9a78se77dl4d0higm7bf703jk3qv5gnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvZeEibaDlFWm53Yzp6wAwyhxBtHGMjsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92852936111-9a78se77dl4d0higm7bf703jk3qv5gnv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

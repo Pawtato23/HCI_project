@@ -1,0 +1,70 @@
+buildscript {
+    ext.kotlin_version = '2.0.0'  // Match the version in the root build.gradle
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.4.1'
+    }
+}
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+    
+}
+
+android {
+    namespace = "com.example.notesync"
+    compileSdkVersion = 35
+    ndkVersion = "27.0.12077973"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    defaultConfig {
+        applicationId = "com.example.notesync"
+        minSdk = 21  // Lowered to 21 for better compatibility
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        
+        // Add the web client ID from google-services.json
+        resValue("string", "server_client_id", "92852936111-9a78se77dl4d0higm7bf703jk3qv5gnv.apps.googleusercontent.com")
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+    
+    lintOptions {
+        disable 'InvalidPackage'
+        checkReleaseBuilds false
+    }
+
+    configurations.all {
+        exclude group: 'com.linusu', module: 'flutter_web_auth'
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
+}
+
+
